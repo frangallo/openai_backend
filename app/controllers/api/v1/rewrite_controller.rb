@@ -3,7 +3,7 @@ module Api
     class RewriteController  < ApiController
       def rewrite
        @response = ChatgptService.call(params[:text], params[:tone], params[:length])
-       render json: @response
+       render json: {content: @response}
      end
     end
   end
