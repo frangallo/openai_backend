@@ -13,7 +13,7 @@ class ChatgptService
     }
     @api_url = 'https://api.openai.com/v1/chat/completions'
     @model = model
-    @message = "Your task is to rewrite the following sentence in a #{tone} tone and provide 5 responses. Your responses should be creative and unique, but still capture the essence of the original sentence. The length of the response should be #{length}. Return the responses as an ordered list. Original Sentence: #{text}"
+    @message = "Your task is to rewrite the following sentence in a #{tone} tone, make it the best sentence anyone has ever read, and provide 5 responses. Your responses should be creative and unique, but still capture the essence of the original sentence. The length of the response should be #{length}. Return the responses as an ordered list. Original Sentence: #{text}"
 
   end
 
