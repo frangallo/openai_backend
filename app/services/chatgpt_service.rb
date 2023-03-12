@@ -3,7 +3,7 @@ class ChatgptService
 
   attr_reader :api_url, :options, :model, :message
 
-  def initialize(text, tone, length, model = 'gpt-3.5-turbo')
+  def initialize(text, formality, tone, length, model = 'gpt-3.5-turbo')
     api_key = Rails.application.credentials.chatgpt_api_key
     @options = {
       headers: {
@@ -13,7 +13,7 @@ class ChatgptService
     }
     @api_url = 'https://api.openai.com/v1/chat/completions'
     @model = model
-    @message = "Your task is to rewrite the following sentence in a #{tone} tone, make it the best sentence anyone has ever read, and provide 5 responses. Your responses should be creative and unique, but still capture the essence of the original sentence. The length of the response should be #{length}. Return the responses as an ordered list. Original Sentence: #{text}"
+    @message = "Your task is to rewrite the sentence below using a #{formality} formality, #{tone} tone, #{length} length and provide 5 responses. Make it the best sentence anyone has ever read. Your responses should be creative and unique, but still capture the essence of the original sentence. Return the responses as an ordered list. Original Sentence: #{text}"
 
   end
 
@@ -34,8 +34,8 @@ class ChatgptService
   end
 
   class << self
-    def call(text, tone, length, model = 'gpt-3.5-turbo')
-      new(text, tone, length, model).call
+    def call(text, formality, tone, length, model = 'gpt-3.5-turbo')
+      new(text, formality, tone, length, model).call
     end
   end
 end
