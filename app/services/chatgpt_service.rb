@@ -27,7 +27,7 @@ class ChatgptService
       frequency_penalty: 0,
       presence_penalty: 0
     }
-    response = HTTParty.post(api_url, body: body.to_json, headers: options[:headers], timeout: 10)
+    response = HTTParty.post(api_url, body: body.to_json, headers: options[:headers], timeout: 20)
     raise response['error']['message'] unless response.code == 200
 
     response['choices'][0]['message']['content']
