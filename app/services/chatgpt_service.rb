@@ -13,13 +13,13 @@ class ChatgptService
     }
     @api_url = 'https://api.openai.com/v1/chat/completions'
     @model = model
-    @message = "Your task is to rewrite the sentence below using a #{formality} formality, #{tone} tone, #{length} length and provide 5 responses. Make it the best sentence anyone has ever read. Your responses should be creative and unique, but still capture the essence of the original sentence. Return the responses as an ordered list without any extra context. Original Sentence: #{text}"
+    @message = "Your task is to rewrite the sentence below using a #{formality} formality, #{tone} tone, #{length}and provide 5 responses. Make it the best sentence anyone has ever read. Your responses should be creative and unique, but still capture the essence of the original sentence. The length of the response should be #{length}. Return the responses as an ordered list. Original Sentence: #{text}"
 
   end
 
   def call
     body = {
-      model:,
+      model: model,
       messages: [{ role: 'user', content: message}],
       temperature: 0.7,
       max_tokens: 256,
@@ -27,7 +27,7 @@ class ChatgptService
       frequency_penalty: 0,
       presence_penalty: 0
     }
-    response = HTTParty.post(api_url, body: body.to_json, headers: options[:headers], timeout: 20)
+    response = HTTParty.post(api_url, body: body.to_json, headers: options[:headers], timeout: 10)
     raise response['error']['message'] unless response.code == 200
 
     response['choices'][0]['message']['content']
