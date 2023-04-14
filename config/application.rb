@@ -36,7 +36,7 @@ module Thewriterswingman
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'https://askjesusanything.com', 'http://askjesusanything.com' 'file:///Users/fgallo/Desktop/ask_jesus/index.html'
+        origins 'https://askjesusanything.com', 'http://askjesusanything.com', 'https://www.askjesusanything.com/', 'http://www.askjesusanything.com/', 'file:///Users/fgallo/Desktop/ask_jesus/index.html'
         resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
       end
     end
