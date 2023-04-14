@@ -1,4 +1,4 @@
-class ChatgptService
+class Chatgpt4Service
   include HTTParty
 
   attr_reader :api_url, :options, :model, :message
