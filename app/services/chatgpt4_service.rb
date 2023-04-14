@@ -34,7 +34,7 @@ class Chatgpt4Service
   end
 
   class << self
-    def call(text, formality, tone, length, model = 'gpt-4')
+    def call(prompt, model = 'gpt-4')
       new(prompt, model).call
     end
   end
